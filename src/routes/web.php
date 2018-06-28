@@ -6,6 +6,6 @@ $contactify_url = "contactify";
 
 Route::get("$contactify_url", "ContactifyController@embed");
 
-Route::post('/test', "ContactifyController@postContact")->name("contactify_post");
+Route::post('/postContact', "ContactifyController@postContact")->name("contactify_post");
 
 ?>
