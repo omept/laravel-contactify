@@ -11,6 +11,7 @@ class ContactifyServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__. "/routes/web.php");
         $this->loadViewsFrom(__DIR__."/views", "contactify");
+        $this->loadJsonTranslationsFrom(__DIR__."/config");
     }
 
     public function register()
