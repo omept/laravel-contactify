@@ -1,0 +1,19 @@
+{
+  "name": "onwuasoanya/laravel-contactify",
+  "description": "Inputs a fancy contact widget to your laravel 5.6 app",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Onwuasoanya George",
+      "email": "ndu4george@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Onwuasoanya\\Contactilfy\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require": {}
+}
