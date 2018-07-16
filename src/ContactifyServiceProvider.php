@@ -9,9 +9,12 @@ class ContactifyServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        $this->publishes([
+            __DIR__."/config/contactify.php" => config_path('contactify.php')
+        ]);
         $this->loadRoutesFrom(__DIR__. "/routes/web.php");
         $this->loadViewsFrom(__DIR__."/views", "contactify");
-        $this->loadJsonTranslationsFrom(__DIR__."/config");
+        $this->loadMigrationsFrom(__DIR__."/database/migrations");
     }
 
     public function register()

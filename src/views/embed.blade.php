@@ -37,7 +37,7 @@
                     <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                 </div>
                 <div class="form-group">
-                    <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140"
+                    <textarea class="form-control" type="textarea" id="message"  name="message" placeholder="Message" maxlength="140"
                               rows="7"></textarea>
                     <span class="help-block"><p id="characterLeft"
                                                 class="help-block ">You have reached the limit</p></span>

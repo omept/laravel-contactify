@@ -1,11 +1,10 @@
 <?php
-use \Illuminate\Http\Request;
 
+Route::group(['namespace' => 'Onwuasoanya\Contactify\Http\Controllers'], function () {
+    $contactify_url = "contactify";
 
-$contactify_url = "contactify";
+    Route::get("$contactify_url", "ContactifyController@embed");
 
-Route::get("$contactify_url", "ContactifyController@embed");
-
-Route::post('/postContact', "ContactifyController@postContact")->name("contactify_post");
-
+    Route::post('/postContact', "ContactifyController@postContact")->name("contactify_post");
+});
 ?>
