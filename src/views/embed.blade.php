@@ -20,7 +20,7 @@
     <div class="col-md-5">
         <div class="form-area">
             <form  method="post" action="{{ route('contactify_post') }}">
-                @csrf
+                {{ csrf_field() }}
                 <br style="clear:both">
                 <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
                 <div class="form-group">

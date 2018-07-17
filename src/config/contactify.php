@@ -11,5 +11,6 @@ return [
     "failed_contactify_saving_message" => "Message saving failed",
     "failed_redirect_to" => "/home",
     "enable_exception_message" => "true", // defaults to false
-
+    "send_as_email" => "false", // defaults to false
+    "form_email_recipient" => "george@gmail.com", // defaults to false
 ];

@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['namespace' => 'Onwuasoanya\Contactify\Http\Controllers'], function () {
+Route::group(['namespace' => 'Onwuasoanya\Contactify\Http\Controllers', 'middleware'=>['web']], function () {
     $contactify_url = "contactify";
 
     Route::get("$contactify_url", "ContactifyController@embed");
