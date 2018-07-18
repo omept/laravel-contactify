@@ -11,28 +11,24 @@
 <h2> {{ config('contactify.email_heading') }}</h2>
 <p> {{ config('contactify.email_sub_heading') }} </p>
 <br/>
+@php
+    // get all the valid fields to show
+    $valid_fields = config('contactify.fields_to_show_in_email',[]);
+
+@endphp
 <table>
+    @if(count($valid_fields) > 0)
+        @foreach($valid_fields as $valid_field)
 
-    @php
-        $default_valid_fields = [
-        'email',
-        'mobile',
-        'subject',
-        'name',
-        'message',
-    ];
-     // get all the valid fields
-     $valid_fields = config('contactify.fields_to_show_in_email',$default_valid_fields);
+            @if(isset($$valid_field) && !is_null($$valid_field)&& ($valid_field != "message") && (is_string($valid_field)))
+                <tr>
+                    <td><b> {{ ucwords(str_replace('_','',$valid_field)) }}</b></td>
+                    <td> {{(is_string($$valid_field) || (is_numeric($$valid_field))) ? (string) $$valid_field: " --- "}} </td>
+                </tr>
+            @endif
+        @endforeach
 
-    @endphp
-    @foreach($valid_fields as $valid_field)
-        @if(isset($$valid_field) && !is_null($$valid_field))
-            <tr>
-                <td><b> {{ ucwords($$valid_field) }}</b></td>
-                <td> {{$$valid_field}} </td>
-            </tr>
-        @endif
-    @endforeach
+    @endif
 
 </table>
 </body>

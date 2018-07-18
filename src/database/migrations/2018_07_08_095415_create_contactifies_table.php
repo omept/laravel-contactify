@@ -15,11 +15,8 @@ class CreateContactifiesTable extends Migration
     {
         Schema::create('contactifies', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('email', 255)->nullable();
-            $table->string('subject', 255)->nullable();
-            $table->string('mobile', 255)->nullable();
-            $table->string('name', 255)->nullable();
-            $table->text('message')->nullable();
+            $table->text('key_indexs')->nullable();
+            $table->text('key_value_pair')->nullable();
             $table->timestamps();
         });
     }

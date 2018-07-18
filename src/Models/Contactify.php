@@ -8,12 +8,7 @@ class Contactify extends Model
 {
     protected $fillable = [
         'id',
-        'email',
-        'mobile',
-        'subject',
-        'name',
-        'message',
-        'keys',
-        'key_value_pair'
+        'key_indexes',
+        'key_value_pairs'
     ];
 }

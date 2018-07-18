@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Log;
 
 class ContactifyMailable extends Mailable
 {
@@ -18,7 +19,8 @@ class ContactifyMailable extends Mailable
      */
     protected $request_block, $extra_fields;
 
-    public function __construct($request_block, $extra_fields = null)
+//    public $message;
+    public function __construct($request_block, $extra_fields = [])
     {
 
         $this->request_block = $request_block;
@@ -33,10 +35,9 @@ class ContactifyMailable extends Mailable
     public function build()
     {
         $email_view_template = config('contactify.email_view_template', 'contactify::contactify.email');
-        $extra_fields = $this->extra_fields;
-        $request_block = $this->request_block;
-        $email_data= array_merge($request_block, $extra_fields);
-        dd($email_data);
+        $extra_fields = is_array($this->extra_fields) ? $this->extra_fields : [];
+        $request_block = is_array($this->request_block) ? $this->request_block : [];
+        $email_data = array_merge($request_block, $extra_fields);
         return $this->view($email_view_template)->with($email_data);
 
     }

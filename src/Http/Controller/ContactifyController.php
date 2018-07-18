@@ -23,30 +23,32 @@ class ContactifyController extends Controller
 
         $enable_exception_message = config('contactify.enable_exception_message', false);
         $send_as_email = config('contactify.send_as_email', false);
-        $admin_email_recipient = config('contactify.admin_email_recipient', false);
+        $admin_email_recipient = config('contactify.admin_email_recipient', 'foo@bar.com');
 
         try {
 
             $data = $request->all();
-            unset($data['_token']);
-            $data = $this->select_array_indexes($data, ['id', 'email', 'mobile', 'subject', 'name', 'message']);
-            Contactify::create($data);
+            $data = $this->multi_unset($data, ['_token', 'submit']);
+
+            Contactify::create(['key_indexes' => json_encode(array_keys($data)), 'key_value_pairs' =>  json_encode($data)]);
 
             $request->session()->flash($successful_session_flash_key, $successful_contactify_saving_message);
+
             if ($send_as_email) {
-                $email = isset($request->email) ? $request->email : '';
-                $mobile = isset($request->mobile) ? $request->mobile : '';
-                $subject = isset($request->subject) ? $request->subject : '';
-                $name = isset($request->name) ? $request->name : '';
-                $message = isset($request->message) ? $request->message : '';
 
+                if (!$this->isValidEmail($admin_email_recipient)) {
+                    $request->session()->flash($failed_session_flash_key, "Invalid email for recipient.");
+                    return redirect()->to($failed_redirect_to);
+                }
+                $request_array = $this->multi_unset($data, ['_token', 'submit']);
+                Mail::to($admin_email_recipient)->send(new ContactifyMailable($request_array));
 
-                Mail::to($admin_email_recipient)->send(new ContactifyMailable($request->all()));
             }
 
             return redirect()->to($successful_redirect_to);
 
         } catch (\Exception $e) {
+
             $message = $e->getMessage();
             if ($enable_exception_message) {
                 $request->session()->flash($failed_session_flash_key, $message);
@@ -84,4 +86,22 @@ class ContactifyController extends Controller
         }
     }
 
+    public function isValidEmail($email)
+    {
+        return (boolean)filter_var($email, FILTER_VALIDATE_EMAIL) && preg_match('/@.+\./', $email);
+    }
+
+    public function multi_unset($array, $keys)
+    {
+        if (is_array($array)) {
+            foreach ($keys as $key) {
+                unset($array[$key]);
+            }
+
+            return $array;
+
+        } else {
+            return null;
+        }
+    }
 }

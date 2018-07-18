@@ -1,5 +1,5 @@
 <?php
-
+// Warning !!!! Don't add   'message' to your fields to show in email (fields_to_show_in_email), it wont' show. 😂
 return [
 
     "form-action" => "postContact",
@@ -28,10 +28,10 @@ return [
         'mobile',
         'subject',
         'name',
-        'message',
+        'message_body',
     ],
     'extra_fields' => [
-        "key"=> "type" // e.g "profile_picture" => 'image'
+        "key_index"=> "type fo html input field" // e.g "profile_picture" => 'image'
     ]
 
 
