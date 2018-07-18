@@ -23,17 +23,25 @@ class ContactifyController extends Controller
 
         $enable_exception_message = config('contactify.enable_exception_message', false);
         $send_as_email = config('contactify.send_as_email', false);
-        $form_email_recipient = config('contactify.form_email_recipient', false);
+        $admin_email_recipient = config('contactify.admin_email_recipient', false);
 
         try {
 
             $data = $request->all();
             unset($data['_token']);
+            $data = $this->select_array_indexes($data, ['id', 'email', 'mobile', 'subject', 'name', 'message']);
             Contactify::create($data);
 
             $request->session()->flash($successful_session_flash_key, $successful_contactify_saving_message);
-            if($send_as_email){
-                 Mail::to($form_email_recipient)->send(new ContactifyMailable())   ;
+            if ($send_as_email) {
+                $email = isset($request->email) ? $request->email : '';
+                $mobile = isset($request->mobile) ? $request->mobile : '';
+                $subject = isset($request->subject) ? $request->subject : '';
+                $name = isset($request->name) ? $request->name : '';
+                $message = isset($request->message) ? $request->message : '';
+
+
+                Mail::to($admin_email_recipient)->send(new ContactifyMailable($request->all()));
             }
 
             return redirect()->to($successful_redirect_to);
@@ -56,4 +64,24 @@ class ContactifyController extends Controller
     {
         return view("contactify::embed");
     }
+
+
+    public function select_array_indexes($array, $keys)
+    {
+        $val = [];
+        if (is_array($array)) {
+            foreach ($keys as $key) {
+                if (isset($array[$key])) {
+                    $val[$key] = $array[$key];
+                }
+
+            }
+
+            return $val;
+
+        } else {
+            return null;
+        }
+    }
+
 }

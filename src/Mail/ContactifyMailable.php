@@ -1,6 +1,6 @@
 <?php
 
-namespace  Onwuasoanya\Contactify\Mail;
+namespace Onwuasoanya\Contactify\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -16,9 +16,13 @@ class ContactifyMailable extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    protected $request_block, $extra_fields;
+
+    public function __construct($request_block, $extra_fields = null)
     {
-        //
+
+        $this->request_block = $request_block;
+        $this->extra_fields = $extra_fields;
     }
 
     /**
@@ -28,7 +32,12 @@ class ContactifyMailable extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
-//        return $this->markdown('contactify.email');
+        $email_view_template = config('contactify.email_view_template', 'contactify::contactify.email');
+        $extra_fields = $this->extra_fields;
+        $request_block = $this->request_block;
+        $email_data= array_merge($request_block, $extra_fields);
+        dd($email_data);
+        return $this->view($email_view_template)->with($email_data);
+
     }
 }

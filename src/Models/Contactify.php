@@ -13,5 +13,7 @@ class Contactify extends Model
         'subject',
         'name',
         'message',
+        'keys',
+        'key_value_pair'
     ];
 }
