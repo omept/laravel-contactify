@@ -12,7 +12,6 @@ class ContactifyController extends Controller
 {
     public function postContact(Request $request)
     {
-
         // configuration variables
         $successful_session_flash_key = config('contactify.successful_session_flash_key', '');
         $successful_contactify_saving_message = config('contactify.successful_contactify_saving_message', '');
@@ -64,7 +63,7 @@ class ContactifyController extends Controller
 
     public function embed()
     {
-        return view("contactify::embed");
+        return view("contactify::floating_button_for_modal");
     }
 
 

@@ -3,8 +3,21 @@
 return [
 
     "form-action" => "postContact",
-    //can either be get or post
-    "form-method" => "post",
+
+    "form-method" => "post",  //can either be get or post
+    "form-title" => "Contactity Form",
+    "font-awesome-icon" => "fa-bomb",
+    "fields-to-show-in-form" => [
+        'email', //
+        'mobile',
+        'subject',
+        'name',
+        'message_body',
+    ],
+    "required-fields-to-show-in-form" => [
+        'email',
+        'message_body',
+    ],
 
     // session and redirects
     "successful_session_flash_key" => "alert-success",
@@ -19,19 +32,20 @@ return [
 
     // email
     "send_as_email" => "false", // defaults to false
+    "message_length" => "200", // defaults to false
     "email_heading" => "Contact us form", // for email
     "email_sub_heading" => "New entry for form", // for email
     "admin_email_recipient" => "foo@bar.com", // defaults to false
     "email_view_template" => "contactify::contactify.email",
     "fields_to_show_in_email" => [
-        'email',
+        'email', //
         'mobile',
         'subject',
         'name',
         'message_body',
     ],
     'extra_fields' => [
-        "key_index"=> "type fo html input field" // e.g "profile_picture" => 'image'
+        // "key_index" (no space)
     ]
 
 
