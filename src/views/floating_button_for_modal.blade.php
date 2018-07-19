@@ -120,7 +120,7 @@
 
             </div>
             <div class="modal-body">
-                @include('contactify::partials.main_contactify_form',['dont_show_contactify_submit_btn' => false,'dont_show_contactify_form_title' => false] )
+                @include('contactify::partials.main_contactify_form',['dont_show_contactify_submit_btn' => true,'dont_show_contactify_form_title' => true] )
             </div>
             <div class="modal-footer">
                 <button type="button" onclick="sendContactifyContentToServer()" id="urlActionConfirmer"

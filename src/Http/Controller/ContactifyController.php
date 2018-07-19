@@ -2,6 +2,14 @@
 
 namespace Onwuasoanya\Contactify\Http\Controllers;
 
+/**
+ * This file is part of Contactify,
+ * a feedback management solution for Laravel.
+ *
+ * @license MIT
+ * @package Onwuasoanya\contactify
+ */
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -29,7 +37,7 @@ class ContactifyController extends Controller
             $data = $request->all();
             $data = $this->multi_unset($data, ['_token', 'submit']);
 
-            Contactify::create(['key_indexes' => json_encode(array_keys($data)), 'key_value_pairs' =>  json_encode($data)]);
+            Contactify::create(['key_indexes' => json_encode(array_keys($data)), 'key_value_pairs' => json_encode($data)]);
 
             $request->session()->flash($successful_session_flash_key, $successful_contactify_saving_message);
 
@@ -63,7 +71,8 @@ class ContactifyController extends Controller
 
     public function embed()
     {
-        return view("contactify::floating_button_for_modal");
+        return view("contactify::emded");
+//        return view("contactify::floating_button_for_modal");
     }
 
 

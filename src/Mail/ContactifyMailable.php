@@ -2,6 +2,14 @@
 
 namespace Onwuasoanya\Contactify\Mail;
 
+/**
+ * This file is part of Contactify,
+ * a feedback management solution for Laravel.
+ *
+ * @license MIT
+ * @package Onwuasoanya\contactify
+ */
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;

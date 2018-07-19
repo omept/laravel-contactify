@@ -2,8 +2,11 @@
 
     {{ csrf_field() }}
     <br style="clear:both">
-    @if(isset($dont_show_contactify_form_title) && $dont_show_contactify_form_title)
-        <h3 style="margin-bottom: 25px; text-align: center;">{{  config('contactify.form-title', "Contactify Form")}}</h3>
+    @if(isset($dont_show_contactify_form_title) && $dont_show_contactify_form_title == true)
+
+    @else  <h3
+            style="margin-bottom: 25px; text-align: center;">{{  config('contactify.form-title', "Contactify Form")}}</h3>
+
     @endif
     <div class="form-group">
         <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
@@ -25,8 +28,9 @@
         <span class="help-block">
             <p id="characterLeft" class="help-block ">You have reached the limit</p></span>
     </div>
-    <button type="submit" class="hide" id="hiddenSubmitForForm"></button>
-    @if(isset($dont_show_contactify_submit_btn) && $dont_show_contactify_submit_btn)
+    <button type="submit" class="hidden" id="hiddenSubmitForForm"></button>
+    @if(isset($dont_show_contactify_submit_btn) && $dont_show_contactify_submit_btn==true)
+    @else
         <input type="submit" id="submit" class="btn btn-primary pull-right" value="Submit">
     @endif
 </form>

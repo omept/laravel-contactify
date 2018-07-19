@@ -2,6 +2,14 @@
 
 namespace Onwuasoanya\Contactify\Models;
 
+/**
+ * This file is part of Contactify,
+ * a feedback management solution for Laravel.
+ *
+ * @license MIT
+ * @package Onwuasoanya\contactify
+ */
+
 use Illuminate\Database\Eloquent\Model;
 
 class Contactify extends Model

@@ -1,11 +1,21 @@
 <?php
+
+/**
+ * This file is part of Contactify,
+ * a feedback management solution for Laravel.
+ *
+ * @license MIT
+ * @package Onwuasoanya\contactify
+ */
+
+
 // Warning !!!! Don't add   'message' to your fields to show in email (fields_to_show_in_email), it wont' show. 😂
 return [
 
     "form-action" => "postContact",
 
     "form-method" => "post",  //can either be get or post
-    "form-title" => "Contactity Form",
+    "form-title" => "QA Feedback Form",
     "font-awesome-icon" => "fa-bomb",
     "fields-to-show-in-form" => [
         'email', //

@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * This file is part of Contactify,
+ * a feedback management solution for Laravel.
+ *
+ * @license MIT
+ * @package Onwuasoanya\contactify
+ */
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
