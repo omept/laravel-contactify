@@ -22,7 +22,7 @@
 
             @if(isset($$valid_field) && !is_null($$valid_field)&& ($valid_field != "message") && (is_string($valid_field)))
                 <tr>
-                    <td><b> {{ ucwords(str_replace('_','',$valid_field)) }}</b></td>
+                    <td><b> {{ ucwords(str_replace('_',' ',$valid_field)) }}</b></td>
                     <td> {{(is_string($$valid_field) || (is_numeric($$valid_field))) ? (string) $$valid_field: " --- "}} </td>
                 </tr>
             @endif
