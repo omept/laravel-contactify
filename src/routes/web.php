@@ -5,7 +5,7 @@
  * a feedback management solution for Laravel.
  *
  * @license MIT
- * @package Onwuasoanya\contactify
+ * @package Onwuasoanya\Contactify
  */
 
 Route::group(['namespace' => 'Onwuasoanya\Contactify\Http\Controllers', 'middleware' => ['web']], function () {

@@ -7,7 +7,7 @@ namespace Onwuasoanya\Contactify\Mail;
  * a feedback management solution for Laravel.
  *
  * @license MIT
- * @package Onwuasoanya\contactify
+ * @package Onwuasoanya\Contactify
  */
 
 use Illuminate\Bus\Queueable;

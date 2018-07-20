@@ -7,7 +7,7 @@ namespace Onwuasoanya\Contactify\Http\Controllers;
  * a feedback management solution for Laravel.
  *
  * @license MIT
- * @package Onwuasoanya\contactify
+ * @package Onwuasoanya\Contactify
  */
 
 use App\Http\Controllers\Controller;
@@ -69,11 +69,6 @@ class ContactifyController extends Controller
 
     //
 
-    public function embed()
-    {
-        return view("contactify::emded");
-//        return view("contactify::floating_button_for_modal");
-    }
 
 
     public function select_array_indexes($array, $keys)
